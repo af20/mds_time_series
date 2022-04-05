@@ -246,7 +246,6 @@ def do_ARMA_and_residuals_analysis(v_hd, pq: tuple, is_arma=None):
   residuals = pd.DataFrame(results.resid)
   #plt.plot(residuals, color='red'); plt.plot(v_hd, color='blue'); plt.show()
   #OLD_plot_ACF(residuals, label='(Residuals)')
-  #a=888/0
   plot_ACF(residuals, label='(Residuals)')
   plot_PACF(residuals, label='(Residuals)')
 
@@ -263,7 +262,7 @@ def lib_get_if_model_is_significantly_better(df_test, v_hd_forecast_model, v_hd_
   from lib_dm_test import dm_test
   DM_results = dm_test(df_test.value.tolist(), v_hd_forecast_model.tolist(), v_hd_forecast_mean.tolist())
   DM_t_stat, DM_p_value = round(DM_results[0],4), round(DM_results[1],4)
-  msg = 'Diebold-Mariano Test   |   t_stat:', DM_t_stat, '   p_value:', DM_p_value
+  msg = '      Diebold-Mariano Test   |   t_stat: ' + str(DM_t_stat) + '   p_value: ' + str(DM_p_value)
   is_better = True if DM_p_value < 0.05 else False
   if is_better == True:
     print(msg + ' | ==> Model A is significantly better than B.')

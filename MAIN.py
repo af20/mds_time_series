@@ -141,7 +141,6 @@ print('rMSE_model', rMSE_model, '    rMSE_mean', rMSE_mean)
 # Calcolare MSE
 
 ''' Test Diebold-Mariano'''
-from library import lib_get_if_model_is_significantly_better
 is_better = lib_get_if_model_is_significantly_better(df_test, v_hd_forecast_model, v_hd_forecast_mean)
 
 
