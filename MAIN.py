@@ -80,8 +80,6 @@ v_hd_forecast_model = Best_Model.get_multi_step_forecast(v_hd_train, v_hd_test)
 v_hd_forecast_mean = Best_Model.get_multi_step_forecast_mean(v_hd_train, v_hd_test)
 #print(df)
 LEN_2 = len(v_hd_train)
-print('LEN_1',LEN_1,'     LEN_2', LEN_2)
-
 
 
 ''' PLOT Forecast'''
@@ -143,6 +141,7 @@ print('rMSE_model', rMSE_model, '    rMSE_mean', rMSE_mean)
 # Calcolare MSE
 
 ''' Test Diebold-Mariano'''
-from lib_dm_test import dm_test
-DM_results = dm_test(df_test.value.tolist(), v_hd_forecast_model.tolist(), v_hd_forecast_mean.tolist())
-DM_t_stat, DM_p_value = round(DM_results[0],4), round(DM_results[1],4)
+from library import lib_get_if_model_is_significantly_better
+is_better = lib_get_if_model_is_significantly_better(df_test, v_hd_forecast_model, v_hd_forecast_mean)
+
+
