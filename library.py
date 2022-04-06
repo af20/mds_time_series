@@ -264,8 +264,9 @@ def lib_get_if_model_is_significantly_better(df_test, v_hd_forecast_model, v_hd_
   DM_t_stat, DM_p_value = round(DM_results[0],4), round(DM_results[1],4)
   msg = '      Diebold-Mariano Test   |   t_stat: ' + str(DM_t_stat) + '   p_value: ' + str(DM_p_value)
   is_better = True if DM_p_value < 0.05 else False
-  if is_better == True:
-    print(msg + ' | ==> Model A is significantly better than B.')
+  if is_better == True: # p_val < 0.05
+    print(msg + ' | ==> We Accept H0. Model A is NOT significantly better than B.')
   else:
-    print(msg + ' | ==> Model A is NOT significantly better than B.')
+    print(msg + ' | ==> We Reject H0. Model A is significantly better than B.')
   return is_better
+  # p-value < 0.05 ---> accept H0
